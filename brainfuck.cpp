@@ -4,17 +4,21 @@
 
 #include "brainfuck.hpp"
 
-int main() {
+int main()
+{
 	std::istreambuf_iterator<char> begin(std::cin), end;
 	std::string input(begin, end);
 
 	int exit_code = 0;
 	Brainfuck bf(input.c_str());
 
-	try {
+	try
+	{
 		bf.run();
 		std::cout << '\n';
-	} catch(const InvalidBrainfuckChar &ex) {
+	}
+	catch (const InvalidBrainfuckChar &ex)
+	{
 		exit_code = 1;
 		std::cout << ex.what() << '\n';
 	}
