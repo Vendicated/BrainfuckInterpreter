@@ -4,7 +4,7 @@ My Brainfuck implementation according to the spec described here <https://en.wik
 
 ## Interpreter
 
-This interprets any given Brainfuck code. It does not check the validity of the Brainfuck, so you might run into errors if you try to interpret invalid Brainfuck code.
+This interprets any given Brainfuck code.
 
 Usage: Compile, then run
 
