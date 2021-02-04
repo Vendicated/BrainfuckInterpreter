@@ -11,4 +11,4 @@
 --------.
 >>>++++[<++++++++>-]<+.
 
-Source: https://therenegadecoder.com/code/hello-world-in-brainfuck/
+Source: https://therenegadecoder DOT com/code/hello DASH world DASH in DASH brainfuck/
