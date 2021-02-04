@@ -21,7 +21,7 @@ int main()
 
 	Brainfuck bf(input.c_str());
 
-	bf.run();
+	bf.evaluate();
 	std::cout << '\n';
 
 	return EXIT_SUCCESS;

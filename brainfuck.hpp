@@ -12,45 +12,10 @@ public:
 
 class Brainfuck
 {
-public:
+private:
 	char arr[30000] = {0};
 	char *ptr = arr;
 	const char *cursor;
-
-	Brainfuck(const char *bf)
-	{
-		cursor = bf;
-	}
-
-	static void validate(const char *bf)
-	{
-		int depth = 0;
-
-		while (*bf)
-		{
-			if (*bf == '[')
-				depth++;
-			else if (*bf == ']')
-				depth--;
-
-			if (depth < 0)
-				break;
-
-			bf++;
-		}
-
-		if (depth)
-			throw UnmatchedBracketException();
-	}
-
-	void run()
-	{
-		while (*cursor)
-		{
-			walk();
-			cursor++;
-		}
-	}
 
 	void go_to_closing_bracket()
 	{
@@ -106,6 +71,42 @@ public:
 		case ',':
 			std::cin >> *ptr;
 			break;
+		}
+	}
+
+public:
+	Brainfuck(const char *bf)
+	{
+		cursor = bf;
+	}
+
+	static void validate(const char *bf)
+	{
+		int depth = 0;
+
+		while (*bf)
+		{
+			if (*bf == '[')
+				depth++;
+			else if (*bf == ']')
+				depth--;
+
+			if (depth < 0)
+				break;
+
+			bf++;
+		}
+
+		if (depth)
+			throw UnmatchedBracketException();
+	}
+
+	void evaluate()
+	{
+		while (*cursor)
+		{
+			walk();
+			cursor++;
 		}
 	}
 };
