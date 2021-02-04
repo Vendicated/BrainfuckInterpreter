@@ -1,11 +1,12 @@
 #include <sstream>
 #include <iostream>
 
-class UnmatchedBrainfuckBracket : public std::exception
+class UnmatchedBracketException : public std::exception
 {
+public:
 	virtual const char *what() const throw()
 	{
-		return "Unmatched [ or ]";
+		return "Brainfuck SyntaxError: Unmatched [ or ]";
 	}
 };
 
@@ -19,6 +20,27 @@ public:
 	Brainfuck(const char *bf)
 	{
 		cursor = bf;
+	}
+
+	static void validate(const char *bf)
+	{
+		int depth = 0;
+
+		while (*bf)
+		{
+			if (*bf == '[')
+				depth++;
+			else if (*bf == ']')
+				depth--;
+
+			if (depth < 0)
+				break;
+
+			bf++;
+		}
+
+		if (depth)
+			throw UnmatchedBracketException();
 	}
 
 	void run()
