@@ -9,29 +9,6 @@ class UnmatchedBrainfuckBracket : public std::exception
 	}
 };
 
-class InvalidBrainfuckChar : public std::exception
-{
-private:
-	char character;
-
-public:
-	InvalidBrainfuckChar(char character)
-	{
-		this->character = character;
-	}
-
-	virtual const char *what() const throw()
-	{
-		std::ostringstream stream;
-		stream << "Invalid Character " << character << " at character ";
-
-		const std::string str = stream.str();
-		const char *output = str.c_str();
-
-		return output;
-	}
-};
-
 class Brainfuck
 {
 public:
@@ -107,11 +84,6 @@ public:
 		case ',':
 			std::cin >> *ptr;
 			break;
-		case '\n':
-		case ' ':
-			break;
-		default:
-			throw InvalidBrainfuckChar(*cursor);
 		}
 	}
 };

@@ -12,16 +12,8 @@ int main()
 	int exit_code = 0;
 	Brainfuck bf(input.c_str());
 
-	try
-	{
-		bf.run();
-		std::cout << '\n';
-	}
-	catch (const InvalidBrainfuckChar &ex)
-	{
-		exit_code = 1;
-		std::cout << ex.what() << '\n';
-	}
+	bf.run();
+	std::cout << '\n';
 
 	return exit_code;
 }
