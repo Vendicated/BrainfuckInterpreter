@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include "brainfuck.h"
+#include "shared.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,27 +12,16 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    BRAINFUCK *handle;
-    FILE *fp;
+    BRAINFUCK *handle = brainfuck_init();
+    char *input = parse_args(argc, argv);
 
-    handle = brainfuck_init();
-
-    fp = fopen(argv[1], "r");
-    if (fp)
+    if (input == NULL)
     {
-        brainfuck_loadf(handle, fp);
-        fclose(fp);
+        puts("Something went wrong while parsing the input");
+        return 1;
     }
-    else
-    {
-        char *input = (char *)malloc(sizeof(char *) * (argc - 1) + 1);
-        for (int i = 1; i < argc; i++)
-        {
-            strcat(input, argv[i]);
-        }
 
-        brainfuck_loads(handle, input);
-    }
+    brainfuck_loads(handle, input);
 
     if (brainfuck_validate(handle) != 0)
     {

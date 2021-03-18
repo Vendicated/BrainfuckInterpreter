@@ -1,3 +1,6 @@
+#ifndef _BRAINFUCK_H_
+#define _BRAINFUCK_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -131,3 +134,5 @@ void brainfuck_evaluate(BRAINFUCK *handle)
         handle->cursor++;
     }
 }
+
+#endif
