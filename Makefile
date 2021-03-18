@@ -12,6 +12,7 @@ install: build install-bf install-a2bf
 all: build
 
 build:
+	mkdir -p bin
 	${COMPILER} ${FLAGS} brainfuck.c -o ${BFOUT}
 	${COMPILER} ${A2BFFLAGS} ascii2brainfuck.c -o ${A2BFOUT}
 
