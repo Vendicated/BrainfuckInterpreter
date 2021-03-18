@@ -13,7 +13,7 @@ all: build
 
 build:
 	mkdir -p bin
-	${COMPILER} ${FLAGS} brainfuck.c -o ${BFOUT}
+	${COMPILER} ${BFFLAGS} brainfuck.c -o ${BFOUT}
 	${COMPILER} ${A2BFFLAGS} ascii2brainfuck.c -o ${A2BFOUT}
 
 clean:
@@ -26,7 +26,7 @@ test-a2bf: build
 	out/brainfuck Makefile
 
 debug:
-	${COMPILER} ${FLAGS} -g brainfuck.c -o ${BFOUT}
+	${COMPILER} ${BFFLAGS} -g brainfuck.c -o ${BFOUT}
 	gdb ${BFOUT}
 
 debug-a2bf:
