@@ -44,11 +44,11 @@ char *parse_args(int argc, char *argv[])
         int size = 0;
         out = (char *)malloc(size);
 
-        for (int i = 1; i <= argc - 1; i++)
+        for (int i = 1; i < argc; i++)
         {
             out = (char *)realloc(out, (size + strlen(argv[i])));
             strcat(out, argv[i]);
-            strcat(out, " ");
+            if (i != argc - 1) strcat(out, " ");
         }
     }
 
