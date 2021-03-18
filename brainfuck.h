@@ -49,30 +49,23 @@ int brainfuck_loadf(BRAINFUCK *handle, FILE *fp)
 
 int brainfuck_validate(BRAINFUCK *handle)
 {
-    // Save pointers
-    const char *cursor = handle->cursor;
-    char *ptr = handle->ptr;
-
-    // Set to 0
-    handle->cursor = 0;
-    handle->ptr = 0;
+    const char *origCursor = handle->cursor;
 
     int depth = 0;
-    while (*cursor)
+    while (*handle->cursor)
     {
-        if (*cursor == '[')
+        if (*handle->cursor == '[')
             depth++;
-        else if (*cursor == ']')
+        else if (*handle->cursor == ']')
             depth--;
 
         if (depth < 0)
             break;
 
-        cursor++;
+        handle->cursor++;
     }
 
-    handle->cursor = cursor;
-    handle->ptr = ptr;
+    handle->cursor = origCursor;
 
     return depth == 0 ? 0 : 1;
 }
@@ -134,7 +127,7 @@ void brainfuck_evaluate(BRAINFUCK *handle)
             *handle->ptr = getchar();
             break;
         }
-    }
 
-    handle->cursor++;
+        handle->cursor++;
+    }
 }
