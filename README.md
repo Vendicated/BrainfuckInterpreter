@@ -39,3 +39,7 @@ Example:
 $ ascii2brainfuck Hello World\!
 >++++++++[<++++++++>-]<++++++++.>++....
 ```
+
+___
+
+This is my first time writing C so the code is probably horrible. But hey it does work ;)
