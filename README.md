@@ -2,9 +2,11 @@
 
 My Brainfuck implementation according to the spec described here <https://en.wikipedia.org/wiki/Brainfuck#Language_design>
 
-## Building
+## Installation
 
-Simply run `make`. That's it. If you're on windows, welp :D
+1. `git clone https://github.com/Vendicated/Brainfuck-Interpreter`
+2. `cd Brainfuck-Interpreter`
+3. `sudo make install` to install to /usr/local/bin or `make install PREFIX=/custom/dir` to install to /custom/dir
 
 ## Interpreter
 
