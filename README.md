@@ -4,6 +4,10 @@ My Brainfuck implementation according to the spec described here <https://en.wik
 
 ## Installation
 
+The simplest way is to just grab precompiled binaries from the [releases tab](https://github.com/Vendicated/BrainfuckInterpreter/releases/latest) 
+
+### From Source
+
 1. `git clone https://github.com/Vendicated/Brainfuck-Interpreter`
 2. `cd Brainfuck-Interpreter`
 3. `sudo make install` to install to /usr/local/bin or `make install PREFIX=/custom/dir` to install to /custom/dir
