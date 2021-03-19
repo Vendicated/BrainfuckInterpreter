@@ -6,10 +6,10 @@ BFFLAGS=-Wall
 A2BFOUT=bin/ascii2brainfuck
 A2BFFLAGS=-Wall -lm
 
+all: build
+
 .PHONY: install
 install: build install-bf install-a2bf
-
-all: build
 
 build:
 	mkdir -p bin
@@ -19,19 +19,21 @@ build:
 clean:
 	rm -rf out/*
 
-test: build
-	out/brainfuck test.bf
+test: test-bf test-a2bf
+
+test-bf: build
+	${BFOUT} test.bf
 
 test-a2bf: build
-	out/brainfuck Makefile
+	${A2BFOUT} Makefile
 
-debug:
-	${COMPILER} ${BFFLAGS} -g brainfuck.c -o ${BFOUT}
-	gdb ${BFOUT}
+debug: debug-bf debug-a2bf
+
+debug-bf:
+	${COMPILER} ${BFFLAGS} -fsanitize=address -g brainfuck.c -o ${BFOUT}
 
 debug-a2bf:
-	${COMPILER} ${A2BFFLAGS} -g ascii2brainfuck.c -o ${A2BFOUT}
-	gdb ${A2BFOUT}
+	${COMPILER} ${A2BFFLAGS} -fsanitize=address -g ascii2brainfuck.c -o ${A2BFOUT}
 
 install-bf: bin/brainfuck
 	mkdir -p $(PREFIX)/$(dir $<)
