@@ -17,7 +17,5 @@ int main(int argc, char *argv[])
 
     ascii_to_brainfuck(input);
 
-    free(input);
-
     return 0;
 }

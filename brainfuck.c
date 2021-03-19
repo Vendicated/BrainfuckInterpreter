@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     if (input == NULL)
     {
-        puts("Something went wrong while parsing the input");
+        fputs("Something went wrong while parsing the input", stderr);
         return 1;
     }
 
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     if (brainfuck_validate(handle) != 0)
     {
-        puts("Invalid brainfuck.");
+        fputs("Invalid brainfuck.", stderr);
         return 1;
     }
 

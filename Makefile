@@ -13,8 +13,8 @@ install: build install-bf install-a2bf
 
 build:
 	mkdir -p bin
-	${COMPILER} ${BFFLAGS} brainfuck.c -o ${BFOUT}
-	${COMPILER} ${A2BFFLAGS} ascii2brainfuck.c -o ${A2BFOUT}
+	${COMPILER} ${BFFLAGS} -s brainfuck.c -o ${BFOUT}
+	${COMPILER} ${A2BFFLAGS} -s ascii2brainfuck.c -o ${A2BFOUT}
 
 clean:
 	rm -rf out/*
@@ -22,10 +22,10 @@ clean:
 test: test-bf test-a2bf
 
 test-bf: build
-	${BFOUT} test.bf
+	${BFOUT} test.bf > /dev/null
 
 test-a2bf: build
-	${A2BFOUT} Makefile
+	${A2BFOUT} Makefile > /dev/null
 
 debug: debug-bf debug-a2bf
 
