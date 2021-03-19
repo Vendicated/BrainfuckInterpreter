@@ -30,7 +30,7 @@ char *read_file(FILE *fp)
 
 char *parse_args(int argc, char *argv[])
 {
-    char *out;
+    char *out = NULL;
     FILE *fp;
 
     fp = fopen(argv[1], "r");
@@ -41,15 +41,21 @@ char *parse_args(int argc, char *argv[])
     }
     else
     {
-        int size = 0;
-        out = (char *)malloc(size);
+        size_t size = 1;
+        for (int i = 1; i < argc; i++)
+        {
+            size += strlen(argv[i]) + 1;
+        }
+        out = malloc(size);
+        size = 0;
 
         for (int i = 1; i < argc; i++)
         {
-            out = (char *)realloc(out, (size + strlen(argv[i])));
-            strcat(out, argv[i]);
-            if (i != argc - 1) strcat(out, " ");
+            size += sprintf(out + size, "%s ", argv[i]);
         }
+
+        // Remove last space
+        out[--size] = '\0';
     }
 
     return out;
