@@ -16,10 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef _ASCII_2_BRAINFUCK_H_
-#define _ASCII_2_BRAINFUCK_H_
+#ifndef _BRAINFUCK_MAIN_H_
+#define _BRAINFUCK_MAIN_H_
 
-void print_char(char character, int times);
-void ascii_to_brainfuck(const char *text);
+#include <stdio.h>
+
+int to_brainfuck(int argc, char *argv[]);
+int eval(int argc, char *argv[]);
+
+char *read_file(FILE *fp);
+char *parse_args(int argc, char *argv[]);
 
 #endif

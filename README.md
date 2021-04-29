@@ -4,7 +4,7 @@ My Brainfuck implementation according to the spec described here <https://en.wik
 
 ## Installation
 
-The simplest way is to just grab precompiled binaries from the [releases tab](https://github.com/Vendicated/BrainfuckInterpreter/releases/latest) 
+The simplest way is to just grab precompiled binaries from the [releases tab](https://github.com/Vendicated/BrainfuckInterpreter/releases/latest)
 
 ### From Source
 
@@ -19,13 +19,13 @@ This interprets any given Brainfuck code
 Usage:
 
 ```bash
-brainfuck [FILE | TEXT...]
+brainfuck decode [FILE | TEXT...]
 ```
 
 Example:
 
 ```bash
-$ brainfuck samples/HelloWorld.bf
+$ brainfuck decode samples/HelloWorld.bf
 Hello World!
 ```
 
@@ -36,16 +36,12 @@ This converts plain ascii text to Brainfuck
 Usage:
 
 ```bash
-ascii2brainfuck [FILE | TEXT...]
+brainfuck encode [FILE | TEXT...]
 ```
 
 Example:
 
 ```bash
-$ ascii2brainfuck Hello World\!
+$ brainfuck encode Hello World!
 >++++++++[<++++++++>-]<++++++++.>++....
 ```
-
-___
-
-This is my first time writing C so the code is probably horrible. But hey it does work ;)
