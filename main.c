@@ -69,6 +69,11 @@ int to_brainfuck(int argc, char *argv[])
     }
 
     char *input = parse_args(argc, argv);
+    if (!input)
+    {
+        fprintf(stderr, "Failed to allocate memory\n");
+        return EXIT_FAILURE;
+    }
 
     ascii_to_brainfuck(input);
 
@@ -86,14 +91,14 @@ int eval(int argc, char *argv[])
         return EXIT_SUCCESS;
     }
 
-    BRAINFUCK *handle = brainfuck_init();
     char *input = parse_args(argc, argv);
-
-    if (input == NULL)
+    if (!input)
     {
-        fputs("Something went wrong while parsing the input", stderr);
+        fprintf(stderr, "Failed to allocate memory\n");
         return EXIT_FAILURE;
     }
+
+    BRAINFUCK *handle = brainfuck_init();
 
     brainfuck_loads(handle, input);
 
@@ -120,16 +125,12 @@ char *read_file(FILE *fp)
     rewind(fp);
 
     out = (char *)malloc(sizeof(char) * (cont_size + 1));
+    if (!out)
+        return NULL;
 
     read_size = fread(out, sizeof(char), cont_size, fp);
 
     out[read_size] = '\0';
-    if (read_size != cont_size)
-    {
-        // Something went wrong while reading file
-        free(out);
-        out = NULL;
-    }
 
     return out;
 }
