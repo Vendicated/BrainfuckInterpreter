@@ -8,9 +8,9 @@ The simplest way is to just grab precompiled binaries from the [releases tab](ht
 
 ### From Source
 
-1. `git clone https://github.com/Vendicated/Brainfuck-Interpreter`
-2. `cd Brainfuck-Interpreter`
-3. `sudo make install` to install to /usr/local/bin or `make install PREFIX=/custom/dir` to install to /custom/dir
+1. `git clone https://github.com/Vendicated/BrainfuckInterpreter`
+2. `cd BrainfuckInterpreter`
+3. `sudo make install` to install to /usr/local/bin or `make install PREFIX=/custom/dir` to install to /custom/dir/bin
 
 ## Interpreter
 
